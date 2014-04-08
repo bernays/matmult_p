@@ -49,14 +49,14 @@ int main()
                 snprintf(bufargs[3],20,"%d",column);    /*Column number where result will be placed*/
                 snprintf(bufargs[0],20,"%d",id_shmem);  /*ID of shared memory object*/
                 int ptr = 0;
-                for( int i = 0; i <  columns; i++)
+                for(i = 0; i <  columns; i++)
                 {
                     ptr += snprintf(bufargs[4] + ptr,sizeof(bufargs[4]),"%d ", inputmatrix1[row][i]); //Creation of string that will hold the row of the first matrix
                     
                     
                 }
                 ptr = 0;
-                for( int i = 0; i <  columns; i++)
+                for(i = 0; i <  columns; i++)
                 {
                     ptr += snprintf(bufargs[5] + ptr, sizeof(bufargs[5]), "%d ", inputmatrix2[i][column]); //Creation of string that will hold the column of the second matrix
                 }
