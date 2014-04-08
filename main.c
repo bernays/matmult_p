@@ -28,7 +28,7 @@ int main()
     int inputmatrix1[20][20];
     int inputmatrix2[20][20];
     int rows; // The number of rows of the 2D array
-    int columns;// The number of columns of the 2D array
+    int columns=0;// The number of columns of the 2D array
     int rows2, columns2; //Size of 2nd 2D array
     readmats(inputmatrix1, inputmatrix2, &rows, &columns, &rows2, &columns2);
 
@@ -126,8 +126,7 @@ void readmats(int inputmatrix1[20][20], int inputmatrix2[20][20], int* rows, int
             *rows = rowcounter; // The number of rows of the 2D array
             *columns = columncounter; // The number of columns of the 2D array
         }
-        columncounter = 0;
-        
+        columncounter =0;
         strpos =0;
         columncounter2 = 0;
         token = strtok(stdbuf, " ");
@@ -138,12 +137,11 @@ void readmats(int inputmatrix1[20][20], int inputmatrix2[20][20], int* rows, int
             inputmatrix1[rowcounter][columncounter]=myint;
             token = strtok(NULL, " ");
             columncounter++;
-            
         }
         if(matrix2 == 0){
             if(rowcounter>0){
                 if(columncounter != *columns){
-                    fprintf(stderr, "Invalid number of columns in first matrix\n");
+                    fprintf(stderr, "Invalid number of columns in first matrix %d  %d %d\n", rowcounter,columncounter,*columns);
                     exit(-1);
 
                 }
@@ -160,8 +158,7 @@ void readmats(int inputmatrix1[20][20], int inputmatrix2[20][20], int* rows, int
             myint =atoi(token);
             inputmatrix2[rowcounter2][columncounter2]=myint;
             token = strtok(NULL, " ");
-            columncounter2++;
-            
+                columncounter2++;
         }
         if(matrix2 == 1){
             if(rowcounter2>0){
@@ -185,7 +182,6 @@ void readmats(int inputmatrix1[20][20], int inputmatrix2[20][20], int* rows, int
     }
     //http://sourcecookbook.com/en/recipes/67/how-to-use-multidimensional-arrays-in-shared-memory-with-ipc
     *rows2 = rowcounter2; // The number of rows of the 2D array
-    *columns2 = columncounter2; // The number of columns of the 2D array
     if(*columns == *rows2){
         //printf("Valid matrix dimensions: Columns: %d. Rows %d\n", *columns, *rows2);
     }
